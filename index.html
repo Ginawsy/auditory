@@ -23,7 +23,13 @@
 
     // Initialize jsPsych
 //     var jsPsych = initJsPsych();
-
+    var jsPsych = initJsPsych({
+   
+      preload_audio: [
+        'trunc-1_1/Bn-ord-A#2-ff-N-N_trunc.mp3',
+        'trunc-1_1/Bn-ord-A#2-mf-N-T11u_trunc.wav'
+        ]
+    });
     // Setup a timeline object 
     var timeline = [];
     
@@ -63,15 +69,8 @@
 
     timeline.push(stimulusTrial)
       
-    initJsPsych({
-      timeline: timeline,
-   
-      preload_audio: [
-        'trunc-1_1/Bn-ord-A#2-ff-N-N_trunc.mp3',
-        'trunc-1_1/Bn-ord-A#2-mf-N-T11u_trunc.wav'
-        ]
-    });
-//     jsPsych.run(timeline);
+      
+   jsPsych.run(timeline);
     
     </script>
   </body>
