@@ -22,7 +22,7 @@
     <script type="text/javascript">
 
     // Initialize jsPsych
-    var jsPsych = initJsPsych();
+//     var jsPsych = initJsPsych();
 
     // Setup a timeline object 
     var timeline = [];
@@ -56,14 +56,22 @@
         prompt: "<p>same pitch?</p>"
       }
 
-    var preload_block_1 = {
-        type: jsPsychPreload,
-        trials: [stimulusTrial]
-    }
+//     var preload_block_1 = {
+//         type: jsPsychPreload,
+//         trials: [stimulusTrial]
+//     }
 
-    timeline.push(preload_block_1)
-
-    jsPsych.run(timeline);
+    timeline.push(stimulusTrial)
+      
+    initJsPsych({
+      timeline: timeline,
+   
+      preload_audio: [
+        'trunc-1_1/Bn-ord-A#2-ff-N-N_trunc.mp3',
+        'trunc-1_1/Bn-ord-A#2-mf-N-T11u_trunc.wav'
+        ]
+    });
+//     jsPsych.run(timeline);
     
     </script>
   </body>
