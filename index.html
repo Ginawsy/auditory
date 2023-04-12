@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My experiment</title>
+    
+    <!-- here's how you import jsPsych from your local bundle-->
+    <script src="jspsych/dist/jspsych.js"></script>
+    
+    <!-- here's how you import plugins from your local jsPsych bundle -->
+    <script src="jspsych/dist/plugin-image-keyboard-response.js"></script>
+    <script src="jspsych/dist/plugin-free-sort.js"></script>
+    <script src="jspsych/dist/plugin-instructions.js"></script>
+    <script src="jspsych/dist/plugin-preload.js"></script>
+    <script src="jspsych/dist/plugin-audio-button-response.js"></script>
+
+    <!-- here's how you import the jsPsych style file from your local jsPsych bundle -->
+    <link href="jspsych/dist/jspsych.css" rel="stylesheet" type="text/css" />
+  </head>
+  
+  <body>
+    <!-- jsPsych code goes here -->
+    <script type="text/javascript">
+
+    // Initialize jsPsych
+    var jsPsych = initJsPsych();
+
+    // Setup a timeline object 
+    var timeline = [];
+    
+    // Create a an instruction trial using the jsPsychInstructions plugin
+    var instructionsTrial = {
+        type: jsPsychInstructions,
+        pages: [
+          'Welcome to the experiment. Click next to begin.',
+          'This is the second page of instructions.',
+          'On each trial, you will be shown an image and asked to press one of two keys. Please click Continue to begin.'
+        ],
+        button_label_next: "Continue",
+        button_label_previous: "Go Back",
+        show_clickable_nav: true
+    }
+
+    // Add the instructions trials to the timeline
+    timeline.push(instructionsTrial)
+    var preload = {
+        type: jsPsychPreload,
+        auto_preload: true
+    }
+    
+    var sounds = [
+      'trunc-1_1/Bn-ord-A#2-ff-N-N_trunc.mp3',
+      'trunc-1_1/Bn-ord-A#2-mf-N-T11u_trunc.wav' // not presented in this snippet
+    ];
+
+    var stimulusTrial = {
+        type: jsPsychAudioButtonResponse,
+        stimulus: sounds,
+        choices: ['Yes', 'No'],
+        prompt: "<p>same pitch?</p>"
+      }
+
+    timeline.push(stimulusTrial)
+
+    jsPsych.run(timeline);
+    
+    </script>
+  </body>
+  
+</html>
